@@ -1,15 +1,8 @@
 #include <stdio.h>
 
 int main() {
-    float celsius, fahrenheit;
-
-    if (scanf("%f", &celsius) != 1) {
-        return 1;
-    }
-
-    fahrenheit = (celsius * 9.0f / 5.0f) + 32.0f;
-
-    printf("%.1f°C équivaut à %.1f°F\n", celsius, fahrenheit);
-
+    float c;
+    if (scanf("%f", &c) != 1) return 1;
+    printf("%.1f°C équivaut à %.1f°F\n", c, (c * 9 / 5) + 32);
     return 0;
 }
