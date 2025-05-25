@@ -1,32 +1,26 @@
-#include <stdio.h>
+#include <stdio.h>  // Bibliothèque standard utilisée pour les fonctions d'entrée et de sortie
 
 int main() {
-    int n, original, count = 0;
+    int nombre;       // Sert à enregistrer le nombre donné par l'utilisateur
+    int compteur = 0; // Sert à compter combien de chiffres contient le nombre
 
-    // Lire un entier depuis l'entrée standard
-    scanf("%d", &n);
+    scanf("%d", &nombre);  // Récupération du nombre entré au clavier
 
-    // Conserver la valeur originale de n pour l'affichage
-    original = n;
+    int copie = nombre;  // Stockage du nombre original pour pouvoir l'afficher ensuite
 
-    // Si le nombre est zéro, il contient un chiffre
-    if (n == 0) {
-        count = 1;
+    // Cas particulier : 0 est considéré comme ayant un seul chiffre
+    if (nombre == 0) {
+        compteur = 1;
     } else {
-        // Si le nombre est négatif, le rendre positif pour le traitement
-        if (n < 0) {
-            n = -n;
-        }
-
-        // Compter le nombre de chiffres en divisant le nombre par 10
-        while (n != 0) {
-            n /= 10;
-            count++;
+        // On divise successivement par 10 pour extraire les chiffres un à un
+        while (nombre != 0) {
+            nombre /= 10;   // Retire un chiffre en fin de nombre
+            compteur++;     // Augmente le total de chiffres trouvés
         }
     }
 
-    // Afficher le résultat
-    printf("Le nombre %d contient %d chiffre(s).\n", original, count);
+    // Affichage du résultat final
+    printf("%d contient %d chiffre(s).\n", copie, compteur);
 
-    return 0;
+    return 0;  // Indique que le programme s’est terminé correctement
 }
