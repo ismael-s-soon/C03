@@ -1,27 +1,27 @@
-#include <stdio.h>  // Inclusion de la bibliothèque standard pour utiliser printf et scanf
+#include <stdio.h>  // Inclusion de la bibliothèque standard pour scanf et printf
 
 int main() {  // Début de la fonction principale
 
-    int nombre;       // Déclaration de la variable "nombre" qui contiendra la valeur entrée par l'utilisateur
-    int compteur = 0; // Initialisation de la variable "compteur" à 0, elle servira à compter les chiffres
+    int n, c = 0, copie;  // Déclaration de :
+                          // n : le nombre entré par l'utilisateur
+                          // c : compteur de chiffres, initialisé à 0
+                          // copie : une copie du nombre original pour l'affichage final
 
-    scanf("%d", &nombre);  // Lecture d’un entier depuis le clavier et stockage dans "nombre"
+    scanf("%d", &n);      // Lecture d’un entier depuis le clavier et stockage dans n
 
-    int copie = nombre;  // Création d'une copie du nombre d’origine, pour ne pas perdre sa valeur pendant le traitement
+    copie = n;            // On garde une copie de n avant modification pour l'afficher à la fin
 
-    // Cas particulier : si l'utilisateur entre 0, on considère que ce nombre a 1 seul chiffre
-    if (nombre == 0) {
-        compteur = 1;  // Le compteur devient 1 car "0" est un chiffre
-    } else {
-        // Si le nombre est différent de 0, on entre dans cette boucle pour compter les chiffres
-        while (nombre != 0) {      // Tant qu’il reste des chiffres dans "nombre"
-            nombre /= 10;         // On divise "nombre" par 10 : cela retire le dernier chiffre
-            compteur++;           // On ajoute 1 au compteur pour chaque chiffre retiré
+    if (n == 0)           // Si le nombre est 0, cas particulier :
+        c = 1;            // on considère qu’il a un seul chiffre
+
+    else                 // Sinon, on entre dans une boucle pour compter les chiffres
+        while (n) {      // Tant que n est différent de 0
+            n /= 10;     // On enlève le dernier chiffre (division entière par 10)
+            c++;         // On incrémente le compteur
         }
-    }
 
-    // Affiche le nombre original et le nombre de chiffres qu’il contient
-    printf("%d contient %d chiffre(s).\n", copie, compteur);
+    // Affiche le nombre original (copie) et le nombre de chiffres (c)
+    printf("%d contient %d chiffre(s).\n", copie, c);
 
-    return 0;  // Le programme termine correctement en renvoyant 0 au système
+    return 0;  // Fin normale du programme
 }
