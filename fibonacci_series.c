@@ -1,33 +1,43 @@
-#include <stdio.h>  // Inclusion de la bibliothèque standard pour les opérations d'entrée/sortie (comme printf et scanf)
+#include <stdio.h> // Inclut la bibliothèque standard pour les fonctions d'entrée/sortie (printf, scanf)
 
 int main() {
-    int limit;  // Variable pour stocker la borne maximale jusqu'où on veut générer la suite de Fibonacci
-    int a = 0, b = 1, suivant;  // Initialisation : a et b sont les deux premiers termes de la suite, suivant servira à stocker le terme suivant
+    int limit, a = 0, b = 1, suivant; 
+    // limit : borne maximale entrée par l'utilisateur
+    // a et b : les deux premiers termes de la suite de Fibonacci (0 et 1)
+    // suivant : stocke temporairement le prochain terme calculé
 
-    scanf("%d", &limit);  // Lecture de la valeur limite entrée par l'utilisateur via le clavier
+    scanf("%d", &limit); 
+    // scanf : lit un entier entré au clavier
+    // "%d" : format pour lire un entier décimal
+    // &limit : adresse mémoire où stocker l’entier lu
 
-    // Affichage des deux premiers termes fixes de la suite de Fibonacci
-    printf("Fibonacci : %d %d ", a, b);
+    printf("Fibonacci : %d %d ", a, b); 
+    // printf : affiche du texte et des variables
+    // "Fibonacci : " : texte affiché tel quel
+    // %d : insère la valeur de a et b dans l’ordre (0 1)
 
-    // Boucle infinie while(1), utilisée ici intentionnellement.
-    // On l'utilise pour générer les termes de la suite jusqu'à dépasser la limite.
-    // Elle sera interrompue manuellement avec "break" quand le prochain terme dépasse la limite.
-    while (1) {
-        suivant = a + b;  // Calcul du terme suivant de la suite en additionnant les deux précédents
+    while (1) { 
+        // while(1) : boucle infinie (répète sans fin sauf si on interrompt)
+        
+        suivant = a + b; 
+        // Calcule le terme suivant de la suite
+        // C’est la somme des deux précédents
 
-        if (suivant > limit)  // Si ce terme dépasse la valeur limite donnée par l'utilisateur
-            break;  // On sort de la boucle : plus de termes à afficher
+        if (suivant > limit) break; 
+        // Si le terme dépasse la limite entrée, on arrête la boucle
 
-        printf("%d ", suivant);  // Affichage du terme actuel de la suite
+        printf("%d ", suivant); 
+        // Affiche le terme courant de la suite avec un espace
 
-        // Mise à jour des variables pour continuer la suite :
-        // Le deuxième terme (b) devient le premier (a),
-        // et le terme calculé (suivant) devient le nouveau b
-        a = b;
-        b = suivant;
+        a = b; 
+        // Décale b vers a : le deuxième devient le premier
+        b = suivant; 
+        // Le terme suivant devient le nouveau b pour l’itération suivante
     }
 
-    printf("\n");  // Ajout d’un retour à la ligne après avoir affiché la suite complète
+    printf("\n"); 
+    // Affiche un retour à la ligne après la suite
 
-    return 0;  // Fin du programme avec code de retour 0, indiquant que tout s'est bien passé
+    return 0; 
+    // Indique que le programme s’est terminé avec succès
 }
