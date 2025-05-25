@@ -1,34 +1,26 @@
-#include <stdio.h>
-
-void afficherFibonacci(unsigned long long limite) {
-    unsigned long long a = 0;
-    unsigned long long b = 1;
-    printf("%llu ", a);
-    while (b <= limite) {
-        printf("%llu ", b);
-        unsigned long long suivant = a + b;
-        a = b;
-        b = suivant;
-    }
-    printf("\n");
-}
+#include <stdio.h>  // Inclusion de la bibliothèque standard pour les opérations d'entrée et de sortie
 
 int main() {
-    char buffer[100];
-    char extra;
-    long long saisie;
+    int limit;  // Variable utilisée pour stocker la borne supérieure saisie par l'utilisateur
+    int a = 0, b = 1, suivant;  // Initialisation des deux premiers termes de la suite de Fibonacci et d'une variable pour le terme suivant
 
-    if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
-        if (sscanf(buffer, "%lld %c", &saisie, &extra) != 1) {
-            return 1;
-        }
+    scanf("%d", &limit);  // Récupération de la valeur limite depuis l'entrée utilisateur
 
-        if (saisie < 0) {
-            return 1;
-        }
+    // Affichage des deux premiers termes de la suite
+    printf("Fibonacci : %d %d ", a, b);
 
-        afficherFibonacci((unsigned long long)saisie);
+    // Boucle tant que le terme suivant reste inférieur ou égal à la limite
+    while (1) {
+        suivant = a + b;  // Génération du prochain nombre dans la suite
+
+        if (suivant > limit)  // Si le terme suivant dépasse la borne, on sort de la boucle
+            break;
+
+        printf("%d ", suivant);  // Affichage du terme généré
+        a = b;  // Décalage des valeurs : l'ancien b devient le nouveau a
+        b = suivant;  // Le terme calculé devient le nouveau b
     }
 
-    return 0;
+    printf("\n");  // Ajout d’un retour à la ligne après l'affichage
+    return 0;  // Fin du programme avec un code de retour standard
 }
